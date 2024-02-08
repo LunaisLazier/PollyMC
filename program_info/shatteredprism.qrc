@@ -1,6 +1,6 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
     <qresource prefix="/">
-        <file>org.fn2006.ShatteredPrism.svg</file>
+        <file>org.lunaislazier.ShatteredPrism.svg</file>
     </qresource>
 </RCC>

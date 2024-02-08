@@ -464,7 +464,7 @@ jobs:
         run: |
           cmake --install ${{ env.BUILD_DIR }} --prefix ${{ env.INSTALL_APPIMAGE_DIR }}/usr
 
-          mv ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/metainfo/org.fn2006.ShatteredPrism.metainfo.xml ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/metainfo/org.fn2006.ShatteredPrism.appdata.xml
+          mv ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/metainfo/org.lunaislazier.ShatteredPrism.metainfo.xml ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/metainfo/org.lunaislazier.ShatteredPrism.appdata.xml
           export "NO_APPSTREAM=1" # we have to skip appstream checking because appstream on ubuntu 20.04 is outdated
 
           export OUTPUT="ShatteredPrism-Linux-x86_64.AppImage"
@@ -506,7 +506,7 @@ jobs:
             echo ":warning: Skipped code signing for Linux AppImage, as gpg key was not present." >> $GITHUB_STEP_SUMMARY
           fi
 
-          ./linuxdeploy-x86_64.AppImage --appdir ${{ env.INSTALL_APPIMAGE_DIR }} --output appimage --plugin qt -i ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/icons/hicolor/scalable/apps/org.fn2006.ShatteredPrism.svg
+          ./linuxdeploy-x86_64.AppImage --appdir ${{ env.INSTALL_APPIMAGE_DIR }} --output appimage --plugin qt -i ${{ env.INSTALL_APPIMAGE_DIR }}/usr/share/icons/hicolor/scalable/apps/org.lunaislazier.ShatteredPrism.svg
 
           mv "ShatteredPrism-Linux-x86_64.AppImage" "ShatteredPrism-Linux-${{ env.VERSION }}-${{ inputs.build_type }}-x86_64.AppImage"
 
@@ -606,7 +606,7 @@ jobs:
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: "ShatteredPrism.flatpak"
-          manifest-path: flatpak/org.fn2006.ShatteredPrism.yml
+          manifest-path: flatpak/org.lunaislazier.ShatteredPrism.yml
       - name: Upload Flatpak (Linux)
         if: runner.os == 'Linux' && matrix.qt_ver != 5
         uses: actions/upload-artifact@v3
