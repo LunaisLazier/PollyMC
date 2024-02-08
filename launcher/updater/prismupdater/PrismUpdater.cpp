@@ -218,11 +218,11 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
 
     // Command line parsing
     QCommandLineParser parser;
-    parser.setApplicationDescription(QObject::tr("An auto-updater for PollyMC"));
+    parser.setApplicationDescription(QObject::tr("An auto-updater for ShatteredPrism"));
 
     parser.addOptions(
         { { { "d", "dir" }, tr("Use a custom path as application root (use '.' for current directory)."), tr("directory") },
-          { { "V", "pollymc-version" },
+          { { "V", "shatteredprism-version" },
             tr("Use this version as the installed launcher version. (provided because stdout can not be reliably captured on windows)"),
             tr("installed launcher version") },
           { { "I", "install-version" }, "Install a specific version.", tr("version name") },
@@ -285,7 +285,7 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
     m_selectUI = parser.isSet("select-ui");
     m_allowDowngrade = parser.isSet("allow-downgrade");
 
-    auto version = parser.value("pollymc-version");
+    auto version = parser.value("shatteredprism-version");
     if (!version.isEmpty()) {
         if (version.contains('-')) {
             auto index = version.indexOf('-');
@@ -346,7 +346,7 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
 #endif
     }
 
-    m_updateLogPath = FS::PathCombine(m_dataPath, "logs", "pollymc_update.log");
+    m_updateLogPath = FS::PathCombine(m_dataPath, "logs", "shatteredprism_update.log");
 
     {  // setup logging
         FS::ensureFolderPathExists(FS::PathCombine(m_dataPath, "logs"));
@@ -576,7 +576,7 @@ void PrismUpdaterApp::run()
 
     if (m_isFlatpak) {
         showFatalErrorMessage(tr("Updating flatpack not supported"), tr("Actions outside of checking if an update is available are not "
-                                                                        "supported when running the flatpak version of PollyMC."));
+                                                                        "supported when running the flatpak version of ShatteredPrism."));
         return;
     }
     if (m_isAppimage) {
@@ -1101,13 +1101,13 @@ void PrismUpdaterApp::backupAppDir()
     if (file_list.isEmpty()) {
         // best guess
         if (BuildConfig.BUILD_ARTIFACT.toLower() == "linux") {
-            file_list.append({ "PollyMC", "bin", "share", "lib" });
+            file_list.append({ "ShatteredPrism", "bin", "share", "lib" });
         } else {  // windows by process of elimination
             file_list.append({
                 "jars",
-                "pollymc.exe",
-                "pollymc_filelink.exe",
-                "pollymc_updater.exe",
+                "shatteredprism.exe",
+                "shatteredprism_filelink.exe",
+                "shatteredprism_updater.exe",
                 "qtlogging.ini",
                 "imageformats",
                 "iconengines",

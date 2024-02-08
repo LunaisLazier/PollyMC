@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: "true"
-          path: "PollyMC-source"
+          path: "ShatteredPrism-source"
       - name: Download artifacts
         uses: actions/download-artifact@v3
       - name: Grab and store version
@@ -39,41 +39,41 @@ jobs:
           echo "VERSION=$tag_name" >> $GITHUB_ENV
       - name: Package artifacts properly
         run: |
-          mv ${{ github.workspace }}/PollyMC-source PollyMC-${{ env.VERSION }}
-          mv PollyMC-Linux-Qt6-Portable*/PollyMC-portable.tar.gz PollyMC-Linux-Qt6-Portable-${{ env.VERSION }}.tar.gz
-          mv PollyMC-Linux-Qt6*/PollyMC.tar.gz PollyMC-Linux-Qt6-${{ env.VERSION }}.tar.gz          
-          mv PollyMC-Linux-Qt5-Portable*/PollyMC-portable.tar.gz PollyMC-Linux-Qt5-Portable-${{ env.VERSION }}.tar.gz
-          mv PollyMC-Linux-Qt5*/PollyMC.tar.gz PollyMC-Linux-Qt5-${{ env.VERSION }}.tar.gz
-          mv PollyMC-*.AppImage/PollyMC-*.AppImage PollyMC-Linux-x86_64.AppImage
-          mv PollyMC-*.AppImage.zsync/PollyMC-*.AppImage.zsync PollyMC-Linux-x86_64.AppImage.zsync
-          mv PollyMC*.flatpak/PollyMC*.flatpak PollyMC-Linux-${{ env.VERSION }}-x86_64.flatpak
-          mv PollyMC-macOS-Legacy*/PollyMC.tar.gz PollyMC-macOS-Legacy-${{ env.VERSION }}.tar.gz
-          mv PollyMC-macOS*/PollyMC.tar.gz PollyMC-macOS-${{ env.VERSION }}.tar.gz
+          mv ${{ github.workspace }}/ShatteredPrism-source ShatteredPrism-${{ env.VERSION }}
+          mv ShatteredPrism-Linux-Qt6-Portable*/ShatteredPrism-portable.tar.gz ShatteredPrism-Linux-Qt6-Portable-${{ env.VERSION }}.tar.gz
+          mv ShatteredPrism-Linux-Qt6*/ShatteredPrism.tar.gz ShatteredPrism-Linux-Qt6-${{ env.VERSION }}.tar.gz          
+          mv ShatteredPrism-Linux-Qt5-Portable*/ShatteredPrism-portable.tar.gz ShatteredPrism-Linux-Qt5-Portable-${{ env.VERSION }}.tar.gz
+          mv ShatteredPrism-Linux-Qt5*/ShatteredPrism.tar.gz ShatteredPrism-Linux-Qt5-${{ env.VERSION }}.tar.gz
+          mv ShatteredPrism-*.AppImage/ShatteredPrism-*.AppImage ShatteredPrism-Linux-x86_64.AppImage
+          mv ShatteredPrism-*.AppImage.zsync/ShatteredPrism-*.AppImage.zsync ShatteredPrism-Linux-x86_64.AppImage.zsync
+          mv ShatteredPrism*.flatpak/ShatteredPrism*.flatpak ShatteredPrism-Linux-${{ env.VERSION }}-x86_64.flatpak
+          mv ShatteredPrism-macOS-Legacy*/ShatteredPrism.tar.gz ShatteredPrism-macOS-Legacy-${{ env.VERSION }}.tar.gz
+          mv ShatteredPrism-macOS*/ShatteredPrism.tar.gz ShatteredPrism-macOS-${{ env.VERSION }}.tar.gz
 
-          tar --exclude='.git' -czf PollyMC-${{ env.VERSION }}.tar.gz PollyMC-${{ env.VERSION }}
+          tar --exclude='.git' -czf ShatteredPrism-${{ env.VERSION }}.tar.gz ShatteredPrism-${{ env.VERSION }}
 
-          for d in PollyMC-Windows-MSVC*; do
+          for d in ShatteredPrism-Windows-MSVC*; do
             cd "${d}" || continue
             LEGACY="$(echo -n ${d} | grep -o Legacy || true)"
             ARM64="$(echo -n ${d} | grep -o arm64 || true)"
             INST="$(echo -n ${d} | grep -o Setup || true)"
             PORT="$(echo -n ${d} | grep -o Portable || true)"
-            NAME="PollyMC-Windows-MSVC"
+            NAME="ShatteredPrism-Windows-MSVC"
             test -z "${LEGACY}" || NAME="${NAME}-Legacy"
             test -z "${ARM64}" || NAME="${NAME}-arm64"
             test -z "${PORT}" || NAME="${NAME}-Portable"
-            test -z "${INST}" || mv PollyMC-*.exe ../${NAME}-Setup-${{ env.VERSION }}.exe
+            test -z "${INST}" || mv ShatteredPrism-*.exe ../${NAME}-Setup-${{ env.VERSION }}.exe
             test -n "${INST}" || zip -r -9 "../${NAME}-${{ env.VERSION }}.zip" *
             cd ..
           done
 
-          for d in PollyMC-Windows-MinGW-w64*; do
+          for d in ShatteredPrism-Windows-MinGW-w64*; do
             cd "${d}" || continue
             INST="$(echo -n ${d} | grep -o Setup || true)"
             PORT="$(echo -n ${d} | grep -o Portable || true)"
-            NAME="PollyMC-Windows-MinGW-w64"
+            NAME="ShatteredPrism-Windows-MinGW-w64"
             test -z "${PORT}" || NAME="${NAME}-Portable"
-            test -z "${INST}" || mv PollyMC-*.exe ../${NAME}-Setup-${{ env.VERSION }}.exe
+            test -z "${INST}" || mv ShatteredPrism-*.exe ../${NAME}-Setup-${{ env.VERSION }}.exe
             test -n "${INST}" || zip -r -9 "../${NAME}-${{ env.VERSION }}.zip" *
             cd ..
           done
@@ -84,26 +84,26 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: ${{ github.ref }}
-          name: PollyMC ${{ env.VERSION }}
+          name: ShatteredPrism ${{ env.VERSION }}
           draft: true
           prerelease: false
           files: |
-            PollyMC-Windows-MSVC-Setup-${{ env.VERSION }}.exe
-            PollyMC-Windows-MSVC-Portable-${{ env.VERSION }}.zip
-            PollyMC-Windows-MSVC-${{ env.VERSION }}.zip
-            PollyMC-Linux-x86_64.AppImage
-            PollyMC-Linux-x86_64.AppImage.zsync
-            PollyMC-Linux-${{ env.VERSION }}-x86_64.flatpak
-            PollyMC-macOS-${{ env.VERSION }}.tar.gz
-            PollyMC-macOS-Legacy-${{ env.VERSION }}.tar.gz
-            PollyMC-Linux-Qt5-${{ env.VERSION }}.tar.gz
-            PollyMC-Linux-Qt5-Portable-${{ env.VERSION }}.tar.gz
-            PollyMC-Linux-Qt6-${{ env.VERSION }}.tar.gz
-            PollyMC-Linux-Qt6-Portable-${{ env.VERSION }}.tar.gz
-            PollyMC-Windows-MSVC-arm64-Setup-${{ env.VERSION }}.exe
-            PollyMC-Windows-MSVC-arm64-Portable-${{ env.VERSION }}.zip
-            PollyMC-Windows-MSVC-arm64-${{ env.VERSION }}.zip
-            PollyMC-Windows-MinGW-w64-Setup-${{ env.VERSION }}.exe
-            PollyMC-Windows-MinGW-w64-Portable-${{ env.VERSION }}.zip
-            PollyMC-Windows-MinGW-w64-${{ env.VERSION }}.zip
-            PollyMC-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Windows-MSVC-Setup-${{ env.VERSION }}.exe
+            ShatteredPrism-Windows-MSVC-Portable-${{ env.VERSION }}.zip
+            ShatteredPrism-Windows-MSVC-${{ env.VERSION }}.zip
+            ShatteredPrism-Linux-x86_64.AppImage
+            ShatteredPrism-Linux-x86_64.AppImage.zsync
+            ShatteredPrism-Linux-${{ env.VERSION }}-x86_64.flatpak
+            ShatteredPrism-macOS-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-macOS-Legacy-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Linux-Qt5-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Linux-Qt5-Portable-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Linux-Qt6-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Linux-Qt6-Portable-${{ env.VERSION }}.tar.gz
+            ShatteredPrism-Windows-MSVC-arm64-Setup-${{ env.VERSION }}.exe
+            ShatteredPrism-Windows-MSVC-arm64-Portable-${{ env.VERSION }}.zip
+            ShatteredPrism-Windows-MSVC-arm64-${{ env.VERSION }}.zip
+            ShatteredPrism-Windows-MinGW-w64-Setup-${{ env.VERSION }}.exe
+            ShatteredPrism-Windows-MinGW-w64-Portable-${{ env.VERSION }}.zip
+            ShatteredPrism-Windows-MinGW-w64-${{ env.VERSION }}.zip
+            ShatteredPrism-${{ env.VERSION }}.tar.gz
