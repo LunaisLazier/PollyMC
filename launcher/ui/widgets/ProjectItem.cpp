@@ -88,7 +88,7 @@ void ProjectItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
     }
 
     {  // Description painting
-        auto description = index.data(UserDataTypes::DESCRIPTION).toString().simplified();
+        auto description = index.data(UserDataTypes::DESCRIPTION).toString();
 
         QTextLayout text_layout(description, opt.font);
 
