@@ -17,7 +17,7 @@
 
 # Advantages over PollyMC [or Prism]
 
-- Maintain's PollyMC's DRM Removal and FTB Downloading, while maintaining support for Microsoft Accounts
+- Maintain's PollyMC's DRM Removal and FTB Downloading, while keeping support for Microsoft Accounts
 - Get updates from upstream Prism that PollyMC may not add
 
 
