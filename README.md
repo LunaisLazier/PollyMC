@@ -10,13 +10,22 @@
   ShatteredPrism is a custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once.<br />
   <br />This is a <b>fork</b> of PrismLauncher and is <b>not</b> endorsed by it.
 </p>
+## Notice
+
+- This is only a page for commits to the initial base project of "PollyMC" to find their way into ShatteredPrism at one point or another.
+- Releases are held on a separate github page linked below!
+
+# Advantages over PollyMC [or Prism]
+
+- Maintain's PollyMC's DRM Removal and FTB Downloading, while keeping support for Microsoft Accounts
+- Get updates from upstream Prism that PollyMC may not add
+
 
 ## Installation
 
-- All downloads and instructions for the original Prism Launcher can be found on their [Website](https://prismlauncher.org/download).
+- Downloads can be found on the [GitHub](https://github.com/LunaisLazier/ShatteredPrism).
 - Last build status can be found in the [GitHub Actions](https://github.com/LunaisLazier/ShatteredPrism/actions) tab (this also includes the pull requests status).
 
-These packages are also available to all the distributions based on the ones mentioned above.
 
 ## Community & Support
 
