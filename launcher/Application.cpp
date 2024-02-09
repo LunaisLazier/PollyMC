@@ -1,4 +1,4 @@
-f// SPDX-FileCopyrightText: 2022 Sefa Eyeoglu <contact@scrumplex.net>
+// SPDX-FileCopyrightText: 2022 Sefa Eyeoglu <contact@scrumplex.net>
 //
 // SPDX-License-Identifier: GPL-3.0-only AND Apache-2.0
 
@@ -664,9 +664,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         // The cat
         m_settings->registerSetting("TheCat", false);
-        m_settings->registerSetting("CatOpacity", 100);
-
-        m_settings->registerSetting("StatusBarVisible", true);
 
         m_settings->registerSetting("ToolbarsLocked", false);
 

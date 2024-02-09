@@ -189,7 +189,7 @@
            <item>
            <widget class="QCheckBox" name="dependenciesDisableBtn">
             <property name="toolTip">
-             <string>>Disable the automatic checking and installation of mod dependencies.</string>
+             <string>Disable automatically checking and installation of mod dependencies.</string>
             </property>
             <property name="text">
              <string>Do not install mod dependencies</string>
@@ -312,54 +312,6 @@
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
            <widget class="ThemeCustomizationWidget" name="themeCustomizationWidget" native="true"/>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="catBox">
-         <property name="title">
-          <string>Cat</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <widget class="QLabel" name="catOpacityLabel">
-            <property name="toolTip">
-             <string>Set the cat's opacity. 0% is fully transparent and 100% is fully opaque.</string>
-            </property>
-            <property name="text">
-             <string>Opacity</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QSpinBox" name="catOpacitySpinBox">
-            <property name="specialValueText">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string>%</string>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="value">
-             <number>0</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </widget>
