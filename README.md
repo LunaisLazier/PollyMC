@@ -26,7 +26,6 @@
 - Downloads can be found on the [GitHub](https://github.com/LunaisLazier/ShatteredPrism).
 - Last build status can be found in the [GitHub Actions](https://github.com/LunaisLazier/ShatteredPrism/actions) tab (this also includes the pull requests status).
 
-These packages are also available to all the distributions based on the ones mentioned above.
 
 ## Community & Support
 
