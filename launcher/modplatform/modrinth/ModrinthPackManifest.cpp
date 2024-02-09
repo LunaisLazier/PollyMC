@@ -94,8 +94,6 @@ void loadIndexedInfo(Modpack& pack, QJsonObject& obj)
 
         pack.extra.donate.append(donate);
     }
-    
-    pack.extra.status = Json::ensureString(obj, "status");
 
     pack.extraInfoLoaded = true;
 }
