@@ -27,7 +27,7 @@
         ${config.pre-commit.installationScript}
       '';
 
-      inputsFrom = [config.packages.shatteredprism-unwrapped];
+      inputsFrom = [config.packages.pollymc-unwrapped];
       buildInputs = with pkgs; [ccache ninja];
     };
 

@@ -13,12 +13,12 @@
     in {
       inherit
         (ourPackages)
-        shatteredprism-qt5-unwrapped
-        shatteredprism-qt5
-        shatteredprism-unwrapped
-        shatteredprism
+        pollymc-qt5-unwrapped
+        pollymc-qt5
+        pollymc-unwrapped
+        pollymc
         ;
-      default = ourPackages.shatteredprism;
+      default = ourPackages.pollymc;
     };
   };
 
@@ -49,16 +49,16 @@
         inherit version;
       };
     in {
-      shatteredprism-qt5-unwrapped = prev.libsForQt5.callPackage ./pkg unwrappedArgs;
+      pollymc-qt5-unwrapped = prev.libsForQt5.callPackage ./pkg unwrappedArgs;
 
-      shatteredprism-qt5 = prev.libsForQt5.callPackage ./pkg/wrapper.nix {
-        shatteredprism-unwrapped = final.shatteredprism-qt5-unwrapped;
+      pollymc-qt5 = prev.libsForQt5.callPackage ./pkg/wrapper.nix {
+        pollymc-unwrapped = final.pollymc-qt5-unwrapped;
       };
 
-      shatteredprism-unwrapped = prev.qt6Packages.callPackage ./pkg unwrappedArgs;
+      pollymc-unwrapped = prev.qt6Packages.callPackage ./pkg unwrappedArgs;
 
-      shatteredprism = prev.qt6Packages.callPackage ./pkg/wrapper.nix {
-        inherit (final) shatteredprism-unwrapped;
+      pollymc = prev.qt6Packages.callPackage ./pkg/wrapper.nix {
+        inherit (final) pollymc-unwrapped;
       };
     };
   };

@@ -1,27 +1,27 @@
-shatteredprism(6)
+pollymc(6)
 
 
 # NAME
 
-shatteredprism - a launcher and instance manager for Minecraft.
+pollymc - a launcher and instance manager for Minecraft.
 
 
 # SYNOPSIS
 
-*shatteredprism* [OPTIONS...]
+*pollymc* [OPTIONS...]
 
 
 # DESCRIPTION
 
-ShatteredPrism is a custom launcher for Minecraft that allows you to easily manage
+PollyMC is a custom launcher for Minecraft that allows you to easily manage
 multiple installations of Minecraft at once. It also allows you to easily
 install and remove mods by simply dragging and dropping.
-Here are the current features of ShatteredPrism.
+Here are the current features of PollyMC.
 
 # OPTIONS
 
 *-d, --dir*=DIRECTORY
-	Use DIRECTORY as the ShatteredPrism root.
+	Use DIRECTORY as the PollyMC root.
 
 *-l, --launch*=INSTANCE_ID
 	Launch the instance specified by INSTANCE_ID.
@@ -30,7 +30,7 @@ Here are the current features of ShatteredPrism.
 	Show the configuration window of the instance specified by INSTANCE_ID.
 
 *--alive*
-	Write a small 'live.check' file after ShatteredPrism starts.
+	Write a small 'live.check' file after PollyMC starts.
 
 *-h, --help*
 	Display help text and exit.
@@ -69,11 +69,11 @@ variables, besides other common Qt variables:
 
 # BUGS
 
-https://github.com/lunaislazier/ShatteredPrism/issues
+https://github.com/fn2006/PollyMC/issues
 
 # RESOURCES
 
-GitHub: https://github.com/lunaislazier/ShatteredPrism
+GitHub: https://github.com/fn2006/PollyMC
 
 # AUTHORS
 
@@ -81,4 +81,3 @@ Prism Launcher Contributors
 
 PollyMC Contributors
 
-ShatteredPrism Contributors

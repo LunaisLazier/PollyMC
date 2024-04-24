@@ -70,20 +70,19 @@ QString getCreditsHtml()
 #endif
     stream << "<center>\n";
 
-    //: %1 is the name of the launcher, determined at build time, e.g. "ShatteredPrism Developers"
+    //: %1 is the name of the launcher, determined at build time, e.g. "Prism Launcher Developers"
     stream << "<h3>" << QObject::tr("%1 Developers", "About Credits").arg(BuildConfig.LAUNCHER_DISPLAYNAME) << "</h3>\n";
-    stream << QString("<p>LunaisLazier %1</p>\n").arg(getGitHub("LunaisLazier"));
-    stream << "<br />\n";
-
-    //: %1 is the name of the launcher, determined at build time, e.g. "ShatteredPrism Contributors"
-    stream << "<h3>" << QObject::tr("%1 Contributors", "About Credits").arg(BuildConfig.LAUNCHER_DISPLAYNAME) << "</h3>\n";
     stream << QString("<p>fn2006 %1</p>\n").arg(getGitHub("fn2006"));
     stream << QString("<p>Evan Goode %1</p>\n").arg(getGitHub("evan-goode"));
+    stream << "<br />\n";
+
+    //: %1 is the name of the launcher, determined at build time, e.g. "Prism Launcher Contributors"
+    stream << "<h3>" << QObject::tr("%1 Contributors", "About Credits").arg(BuildConfig.LAUNCHER_DISPLAYNAME) << "</h3>\n";
     stream << QString("<p>anoraktrend %1</p>\n").arg(getGitHub("anoraktrend"));
     stream << QString("<p>Emma Tebibyte %1</p>\n").arg(getWebsite("https://tebibyte.media/"));
     stream << "<br />\n";
 
-    //: %1 is the name of the launcher, determined at build time, e.g. "ShatteredPrism Developers"
+    //: %1 is the name of the launcher, determined at build time, e.g. "Prism Launcher Developers"
     stream << "<h3>" << QObject::tr("%1 Developers", "About Credits").arg("Prism Launcher") << "</h3>\n";
     stream << QString("<p>Sefa Eyeoglu (Scrumplex) %1</p>\n").arg(getWebsite("https://scrumplex.net"));
     stream << QString("<p>d-513 %1</p>\n").arg(getGitHub("d-513"));
@@ -102,7 +101,7 @@ QString getCreditsHtml()
     stream << "<br />\n";
 
     // TODO: possibly retrieve from git history at build time?
-    //: %1 is the name of the launcher, determined at build time, e.g. "ShatteredPrism Developers"
+    //: %1 is the name of the launcher, determined at build time, e.g. "Prism Launcher Developers"
     stream << "<h3>" << QObject::tr("%1 Developers", "About Credits").arg("MultiMC") << "</h3>\n";
     stream << "<p>Andrew Okin &lt;<a href='mailto:forkk@forkk.net'>forkk@forkk.net</a>&gt;</p>\n";
     stream << QString("<p>Petr Mrázek &lt;<a href='mailto:peterix@gmail.com'>peterix@gmail.com</a>&gt;</p>\n");
@@ -187,8 +186,7 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
     QString urlText("<html><head/><body><p><a href=\"%1\">%1</a></p></body></html>");
     ui->urlLabel->setText(urlText.arg(BuildConfig.LAUNCHER_GIT));
 
-    QString copyText("%1");
-    ui->copyLabel->setText(copyText.arg(BuildConfig.LAUNCHER_COPYRIGHT));
+    ui->copyLabel->setText(BuildConfig.LAUNCHER_COPYRIGHT);
 
     connect(ui->closeButton, SIGNAL(clicked()), SLOT(close()));
 
